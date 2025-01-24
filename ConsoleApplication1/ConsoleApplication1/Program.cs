@@ -10,10 +10,23 @@ namespace ConsoleApplication1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("testdata Modified dev");
-            Console.WriteLine("adaded");
-            Console.WriteLine("testdata Modified dev1");
-            
+            Console.Write("Enter product name: ");
+        string productName = Console.ReadLine();
+
+        string connectionString = "your_connection_string_here";
+        string query = "SELECT * FROM Products WHERE Name LIKE '" + productName + "%'";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlCommand command = new SqlCommand(query, connection);
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+    
+                while (reader.Read())
+                {
+                    Console.WriteLine(reader["Name"]);
+                }
+            }
        
         }
     }

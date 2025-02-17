@@ -24,7 +24,9 @@ namespace ConsoleApplication1
     
                 while (reader.Read())
                 {
+                    
                     Console.WriteLine(reader["Name"]);
+                    
                 }
             }
        
